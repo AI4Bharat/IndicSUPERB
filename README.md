@@ -65,9 +65,9 @@ data
 
 In this section, we describe the tasks included in IndicSUPERB - automatic speech recognition, automatic speaker verification, speech idntification, query by example and keyword spotting.
 
-### Download Pretrained checkpoint
+### Download the Pretrained checkpoint
 
-You can download the IndicWav2Vec pretrained checkpoint from here.
+You can download the IndicWav2Vec pretrained checkpoint from [here](https://indic-asr-public.objectstore.e2enetworks.net/checkpoints/indicw2v/indicw2v_pretrained.pt).
 
 ### Data Preprocessing
 
@@ -132,7 +132,7 @@ python s3prl/run_downstream.py -m evaluate -e <trained_checkpoint> -t test_unkno
 
 Automatic Speaker Verification, ASV verifies whether the speakers of a pair of utterances match as a binary classification, and speakers in the testing set may not appear in the training set. Thus, ASV is more challenging than SID.
 
-The meta data for ASV can be downloaded from [here](https://indic-asr-public.objectstore.e2enetworks.net/indic-asr-public/indic-superb/meta_data.zip).
+The meta data for ASV can be downloaded from [here](https://indic-asr-public.objectstore.e2enetworks.net/indic-superb/meta_data.zip).
 
 #### Training - 
 ```
@@ -176,7 +176,7 @@ For detailed instructions on training ASR models, refer to [IndicWav2vec](https:
 
 Query by Example Spoken Term Detection, QbE detects a spoken term (query) in an audio database (documents) by binary discriminating a given pair of query and document into a match or not. The evaluation metric is maximum term weighted value (MTWV) which balances misses and false alarms.
 
-Download the Query by Example dataset from [here](https://indic-asr-public.objectstore.e2enetworks.net/indic-asr-public/indic-superb/qbe_indicsuperb.zip)[3GB].
+Download the Query by Example dataset from [here](https://indic-asr-public.objectstore.e2enetworks.net/indic-superb/qbe_indicsuperb.zip)[3GB].
 
 #### Evaluate -
 
