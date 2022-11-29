@@ -1,0 +1,39 @@
+
+# this voxceleb1 is doing speaker classification task!
+runner:
+  total_steps: 400000
+  gradient_clipping: 1
+  gradient_accumulate_steps: 1
+
+  log_step: 1000
+  eval_step: 5000
+  save_step: 2000
+  max_keep: 1000
+  eval_dataloaders: 
+    - valid
+  
+optimizer:
+  name: TorchOptim
+  torch_optim_name: Adam
+  lr: 1.0e-4
+
+# comment the whole scheduler config block to disable learning rate scheduling
+scheduler:
+  name: linear_schedule_with_warmup
+  num_warmup_steps: 5000
+
+downstream_expert: 
+  datarc:
+    file_path: "" #/nlsasfs/home/ai4bharat/gramesh/speechteam/e2e_data/pilot4_karya/desicrew_data_raw/dc_data_final/
+    # meta_data: None #stores the mapping label2class
+    num_workers: 12
+    train_batch_size: 128 # on CDAC also change gradient accumulation eff.bs 128
+    eval_batch_size: 1
+    max_timestep: 192000
+
+  modelrc:
+    projector_dim: 128
+    interm_dim: 32    
+    select: UtteranceLevel
+    UtteranceLevel:
+      pooling: MeanPooling

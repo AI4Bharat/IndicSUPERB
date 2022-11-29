@@ -1,0 +1,77 @@
+runner:
+  total_steps: 200000
+  gradient_clipping: 1.0e+3
+  gradient_accumulate_steps: 1
+
+  log_step: 500
+  eval_step: 50000
+  save_step: 5000
+  max_keep: 400
+  eval_dataloaders: [
+    "valid"
+  ]
+  
+optimizer: 
+  name: TorchOptim
+  torch_optim_name: AdamW
+  lr: 1.0e-4
+
+# # comment the whole scheduler config block to disable learning rate scheduling
+# scheduler:
+#   name: linear_schedule_with_warmup
+#   num_warmup_steps: 6000
+
+downstream_expert: 
+  datarc:
+    # In first time, we filter out utterances which shorter than two sec. (change config just influenced by cache files)
+    # If you change min_sec, you need to delete cache file you create and rerun the code, so that the effect will apply.
+    vad_config:
+      min_sec: 32000
+    
+    file_path: "" #/home/speech/superb/datasets/desicrew_data_raw/desicrew_data_clean_asv/bengali
+    train_meta_data: ""
+    valid_meta_data: "" # /home/speech/tools_setup/s3prl/s3prl/downstream/indic_asv/meta_data/bengali/valid_data.txt
+    test_meta_data:  "" # /home/speech/tools_setup/s3prl/s3prl/downstream/indic_asv/meta_data/bengali/test_known_data.txt
+    test_unk_meta_data: "" #/home/speech/tools_setup/s3prl/s3prl/downstream/indic_asv/meta_data/bengali/test_data.txt
+    lang: "" #bengali
+    max_timestep: 128000
+    train_batch_size: 32
+    eval_batch_size: 1
+    num_workers: 8 
+
+  modelrc:
+    module:
+      XVector  # support to [ XVector, Identity ]
+    input_dim: 512
+    agg_module: SP # support for ASP / SP / AP / MP 
+                   # (Attentive Statistic Pooling / Statistic Pooling / Attentive Pooling / Mean Pooling)
+    utter_module:
+      UtteranceExtractor # support to [UtteranceExtractor, UtteranceIdentity]
+    
+    module_config:
+      # You can comment it if you do not use this. To demo the usage, we will show all case.
+      XVector:
+        agg_dim: 1500
+        dropout_p: 0.0
+        batch_norm: False
+      
+      Identity:
+        no_args: True
+        # do nothing    
+    
+    ObjectiveLoss: AMSoftmaxLoss # You can specify config to AMSoftmaxLoss ,AAMSoftmaxLoss or SoftmaxLoss
+    
+    LossConfig:
+      # You can comment it if you do not use this. To demo the usage of SoftmaxLoss, we will show all case.
+      SoftmaxLoss: 
+        no_args: True
+    
+      # You can comment it if you do not use this. To demo the usage of AMSoftmaxLoss, we will show all case.
+      AMSoftmaxLoss:
+        s: 30.0
+        m: 0.4
+      # You can comment it if you do not use this. To demo the usage of AMSoftmaxLoss, we will show all case.
+      AAMSoftmaxLoss:
+        s: 15
+        m: 0.3
+        easy_margin: False
