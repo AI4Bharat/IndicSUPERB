@@ -18,18 +18,18 @@ Vocabulary (no. of unique words)|  6k | 109k  | 54k | 181k | 268k | 132k | 94k |
 The dataset can be downloaded from the links given below.
 
 #### Download Links (Clean split):
-- Train: [85GB](https://indic-asr-public.objectstore.e2enetworks.net/indic-superb/kathbath/clean/train_audio.tar)
-- Valid: [3GB](https://indic-asr-public.objectstore.e2enetworks.net/indic-superb/kathbath/clean/valid_audio.tar)
-- Test Known: [2GB](https://indic-asr-public.objectstore.e2enetworks.net/indic-superb/kathbath/clean/testkn_audio.tar)
-- Test Unknown: [2GB](https://indic-asr-public.objectstore.e2enetworks.net/indic-superb/kathbath/clean/testunk_audio.tar)
+- Train: [85GB](https://objectstore.e2enetworks.net/indic-superb/kathbath/clean/train_audio.tar)
+- Valid: [3GB](https://objectstore.e2enetworks.net/indic-superb/kathbath/clean/valid_audio.tar)
+- Test Known: [2GB](https://objectstore.e2enetworks.net/indic-superb/kathbath/clean/testkn_audio.tar)
+- Test Unknown: [2GB](https://objectstore.e2enetworks.net/indic-superb/kathbath/clean/testunk_audio.tar)
 
-#### Transcripts: [clean](https://indic-asr-public.objectstore.e2enetworks.net/indic-superb/kathbath/clean/transcripts_n2w.tar)
+#### Transcripts: [clean](https://objectstore.e2enetworks.net/indic-superb/kathbath/clean/transcripts_n2w.tar)
 
 #### Download Links (Noisy split):
-- Test Known: [2GB](https://indic-asr-public.objectstore.e2enetworks.net/indic-superb/kathbath/noisy/testkn_audio.tar)
-- Test Unknown: [1.4GB](https://indic-asr-public.objectstore.e2enetworks.net/indic-superb/kathbath/noisy/testunk_audio.tar)
+- Test Known: [2GB](https://objectstore.e2enetworks.net/indic-superb/kathbath/noisy/testkn_audio.tar)
+- Test Unknown: [1.4GB](https://objectstore.e2enetworks.net/indic-superb/kathbath/noisy/testunk_audio.tar)
 
-#### Transcripts: [noisy](https://indic-asr-public.objectstore.e2enetworks.net/indic-superb/kathbath/noisy/transcripts_n2w.tar)
+#### Transcripts: [noisy](https://objectstore.e2enetworks.net/indic-superb/kathbath/noisy/transcripts_n2w.tar)
 
 ### Audio Dataset Format
 
@@ -67,7 +67,7 @@ In this section, we describe the tasks included in IndicSUPERB - automatic speec
 
 ### Download the Pretrained checkpoint
 
-You can download the IndicWav2Vec pretrained checkpoint from [here](https://indic-asr-public.objectstore.e2enetworks.net/checkpoints/indicw2v/indicw2v_pretrained.pt).
+You can download the IndicWav2Vec pretrained checkpoint from [here](https://objectstore.e2enetworks.net/checkpoints/indicw2v/indicw2v_pretrained.pt).
 
 ### Data Preprocessing
 
@@ -132,7 +132,7 @@ python s3prl/run_downstream.py -m evaluate -e <trained_checkpoint> -t test_unkno
 
 Automatic Speaker Verification, ASV verifies whether the speakers of a pair of utterances match as a binary classification, and speakers in the testing set may not appear in the training set. Thus, ASV is more challenging than SID.
 
-The meta data for ASV can be downloaded from [here](https://indic-asr-public.objectstore.e2enetworks.net/indic-superb/meta_data.zip).
+The meta data for ASV can be downloaded from [here](https://objectstore.e2enetworks.net/indic-superb/meta_data.zip).
 
 #### Training - 
 ```
@@ -176,7 +176,7 @@ For detailed instructions on training ASR models, refer to [IndicWav2vec](https:
 
 Query by Example Spoken Term Detection, QbE detects a spoken term (query) in an audio database (documents) by binary discriminating a given pair of query and document into a match or not. The evaluation metric is maximum term weighted value (MTWV) which balances misses and false alarms.
 
-Download the Query by Example dataset from [here](https://indic-asr-public.objectstore.e2enetworks.net/indic-superb/qbe_indicsuperb.zip)[3GB].
+Download the Query by Example dataset from [here](https://objectstore.e2enetworks.net/indic-superb/qbe_indicsuperb.zip)[3GB].
 
 #### Evaluate -
 
